@@ -1,1 +1,548 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>苏教版4-7年级数学 · 综合速成</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f0f4f8;
+            padding: 20px;
+            color: #1e293b;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 32px;
+            box-shadow: 0 20px 60px rgba(0, 20, 30, 0.12);
+            padding: 30px 25px 40px;
+        }
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            color: #0b3b5c;
+            border-left: 6px solid #3b82f6;
+            padding-left: 18px;
+            margin-bottom: 10px;
+        }
+        .sub {
+            color: #64748b;
+            font-size: 16px;
+            margin-bottom: 28px;
+            padding-left: 24px;
+            border-bottom: 1px solid #e9eef3;
+            padding-bottom: 16px;
+        }
+        .section {
+            margin-bottom: 32px;
+        }
+        .section-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1e3a5f;
+            background: #eef6ff;
+            padding: 8px 16px;
+            border-radius: 40px;
+            display: inline-block;
+            margin-bottom: 14px;
+        }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px 24px;
+        }
+        @media (max-width: 600px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+            .container {
+                padding: 18px 14px;
+            }
+        }
+        .card {
+            background: #fafcff;
+            border-radius: 18px;
+            padding: 18px 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            border: 1px solid #e9edf2;
+        }
+        .card h3 {
+            font-size: 17px;
+            font-weight: 600;
+            color: #075985;
+            margin-bottom: 8px;
+        }
+        .card p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #1e293b;
+        }
+        .badge {
+            background: #dbeafe;
+            color: #1e4a7a;
+            padding: 2px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+            display: inline-block;
+            margin-bottom: 6px;
+        }
+        .example-box {
+            background: #f8fafc;
+            border-radius: 14px;
+            padding: 14px 18px;
+            margin-top: 12px;
+            border-left: 4px solid #3b82f6;
+        }
+        .example-box .q {
+            font-weight: 500;
+        }
+        .example-box .a {
+            color: #0b6b3f;
+            margin-top: 6px;
+            font-size: 14px;
+        }
 
+        /* 测验区 */
+        .quiz-area {
+            background: #f2f7fe;
+            border-radius: 28px;
+            padding: 24px 22px;
+            margin-top: 20px;
+            border: 1px solid #dce7f5;
+        }
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+        .quiz-header .progress {
+            font-weight: 600;
+            color: #0b3b5c;
+        }
+        .quiz-header .score {
+            background: #1e3a5f;
+            color: white;
+            padding: 4px 18px;
+            border-radius: 40px;
+            font-size: 15px;
+        }
+        .question-text {
+            font-size: 19px;
+            font-weight: 500;
+            margin-bottom: 18px;
+            line-height: 1.5;
+            min-height: 70px;
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+        .options label {
+            background: white;
+            border-radius: 14px;
+            padding: 12px 18px;
+            border: 2px solid #dce3ed;
+            cursor: pointer;
+            transition: all 0.15s;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .options label:hover {
+            border-color: #7aa9ff;
+            background: #f2f9ff;
+        }
+        .options input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #2563eb;
+            flex-shrink: 0;
+        }
+        .options label.selected-correct {
+            border-color: #16a34a;
+            background: #e6f7ed;
+        }
+        .options label.selected-wrong {
+            border-color: #dc2626;
+            background: #fee8e8;
+        }
+        .options label.show-correct {
+            border-color: #16a34a;
+            background: #e6f7ed;
+        }
+        .btn-group {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .btn {
+            background: #e9eef3;
+            border: none;
+            padding: 10px 28px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 16px;
+            color: #1e293b;
+            cursor: pointer;
+            transition: 0.15s;
+        }
+        .btn-primary {
+            background: #1e4a7a;
+            color: white;
+        }
+        .btn-primary:hover {
+            background: #0b3b5c;
+        }
+        .btn-primary:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #b9c9dd;
+        }
+        .btn-outline:hover {
+            background: #e9eff6;
+        }
+        .result-area {
+            margin-top: 18px;
+            font-size: 16px;
+            font-weight: 500;
+            text-align: center;
+            background: white;
+            padding: 12px;
+            border-radius: 40px;
+        }
+        .footnote {
+            margin-top: 28px;
+            text-align: center;
+            font-size: 14px;
+            color: #6b7f94;
+            border-top: 1px solid #e2eaf2;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="app">
+        <h1>📐 苏教版 · 数学综合速成</h1>
+        <div class="sub">四年级 · 五年级 · 六年级 · 初一（七年级） ｜ 核心知识点 + 例题 + 50道测验</div>
+
+        <!-- ========= 知识点 & 例题 ========= -->
+        <div class="section">
+            <div class="section-title">📖 知识概览 & 例题</div>
+            <div class="grid-2">
+                <!-- 四年级 -->
+                <div class="card">
+                    <span class="badge">四年级</span>
+                    <h3>数与运算 · 图形</h3>
+                    <p>多位数、三位数乘两位、运算律、三角形/平行四边形/梯形、平移旋转、平均数</p>
+                    <div class="example-box">
+                        <div class="q">例1：计算 125×32 用简便方法。</div>
+                        <div class="a">125×32 = 125×8×4 = 1000×4 = 4000</div>
+                    </div>
+                    <div class="example-box">
+                        <div class="q">例2：一个三角形两个角分别是45°和65°，第三个角多少度？</div>
+                        <div class="a">180−45−65=70°</div>
+                    </div>
+                </div>
+                <!-- 五年级 -->
+                <div class="card">
+                    <span class="badge">五年级</span>
+                    <h3>小数 · 分数 · 方程</h3>
+                    <p>小数四则、用字母表示数、简易方程、因数倍数、圆面积、折线统计图</p>
+                    <div class="example-box">
+                        <div class="q">例1：解方程 3x + 5 = 20</div>
+                        <div class="a">3x=15 → x=5</div>
+                    </div>
+                    <div class="example-box">
+                        <div class="q">例2：一个圆的半径是3cm，面积是多少？</div>
+                        <div class="a">π×3² ≈ 28.26 cm²</div>
+                    </div>
+                </div>
+                <!-- 六年级 -->
+                <div class="card">
+                    <span class="badge">六年级</span>
+                    <h3>分数 · 比 · 百分数 · 立体</h3>
+                    <p>分数乘除、比和比例、百分数、长方体/正方体表面积体积、圆柱圆锥</p>
+                    <div class="example-box">
+                        <div class="q">例1：甲∶乙 = 3∶4，甲=12，求乙。</div>
+                        <div class="a">12÷3×4 = 16</div>
+                    </div>
+                    <div class="example-box">
+                        <div class="q">例2：圆柱底面半径2cm，高5cm，体积？</div>
+                        <div class="a">π×2²×5 ≈ 62.8 cm³</div>
+                    </div>
+                </div>
+                <!-- 初一 -->
+                <div class="card">
+                    <span class="badge">初一（七年级）</span>
+                    <h3>有理数 · 代数式 · 方程</h3>
+                    <p>正负数、绝对值、有理数混合运算、整式加减、一元一次方程、相交线与平行线</p>
+                    <div class="example-box">
+                        <div class="q">例1：计算 (−3)² − 4×(−2)</div>
+                        <div class="a">9 + 8 = 17</div>
+                    </div>
+                    <div class="example-box">
+                        <div class="q">例2：解方程 2(x−1) = 3x+4</div>
+                        <div class="a">2x−2=3x+4 → x=−6</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========= 测验 ========= -->
+        <div class="quiz-area" id="quizApp">
+            <div class="quiz-header">
+                <span class="progress">📌 第 <span id="qIndexDisplay">1</span> / 50 题</span>
+                <span class="score">✅ <span id="scoreDisplay">0</span> 正确</span>
+            </div>
+            <div id="questionContainer">
+                <div class="question-text" id="questionText">加载题目...</div>
+                <div class="options" id="optionsContainer"></div>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-outline" id="resetBtn">🔄 重新测验</button>
+                <button class="btn btn-primary" id="nextBtn" disabled>下一题 →</button>
+            </div>
+            <div id="resultMessage" class="result-area"></div>
+        </div>
+        <div class="footnote">✨ 覆盖四～七年级 · 共50道选择题 · 点击选项即反馈正误</div>
+    </div>
+
+    <script>
+        // ---------- 题库 ----------
+        const questions = [
+            // 四年级 (1-10)
+            { grade: 4, q: '两、三位数除以两位数，试商时通常把除数看作（   ）来试商。', opts: ['整十数', '整百数', '整千数', '它本身'], ans: 0 },
+            { grade: 4, q: '下面哪个算式运用了乘法分配律？', opts: ['25×4×8=25×8×4', '36×(100+2)=36×100+36×2', '12×5=5×12', '125×32=125×8×4'], ans: 1 },
+            { grade: 4, q: '一个三角形三个内角中，至少有两个是锐角。（   ）', opts: ['正确', '错误', '不一定', '无法判断'], ans: 0 },
+            { grade: 4, q: '两条直线相交，其中一个角是直角，其余三个角都是（   ）度。', opts: ['45', '90', '180', '360'], ans: 1 },
+            { grade: 4, q: '下面各数中，只读一个零的是（   ）', opts: ['6006000', '6000600', '6000060', '6000006'], ans: 2 },
+            { grade: 4, q: '计算 25×36 时，简便方法是（   ）', opts: ['25×4×9', '25×30×6', '20×36+5×36', '25×6×6'], ans: 0 },
+            { grade: 4, q: '平行四边形有（   ）组对边互相平行。', opts: ['1', '2', '3', '0'], ans: 1 },
+            { grade: 4, q: '在有余数的除法中，被除数 = 除数 × 商 + （   ）', opts: ['除数', '余数', '商', '0'], ans: 1 },
+            { grade: 4, q: '一个三位数除以两位数，商最多是（   ）位数。', opts: ['一', '二', '三', '四'], ans: 1 },
+            { grade: 4, q: '下面图形中，不是轴对称图形的是（   ）', opts: ['长方形', '正方形', '平行四边形', '圆'], ans: 2 },
+            // 五年级 (11-22)
+            { grade: 5, q: '0.25 的计数单位是（   ）', opts: ['0.1', '0.01', '0.001', '0.0001'], ans: 1 },
+            { grade: 5, q: '下面各数中，最大的是（   ）', opts: ['3.14', '3.141', '3.144', '3.1'], ans: 2 },
+            { grade: 5, q: '方程 2x + 3 = 11 的解是 x = （   ）', opts: ['3', '4', '5', '6'], ans: 1 },
+            { grade: 5, q: '一个数的最大因数和最小倍数都是它本身。（   ）', opts: ['正确', '错误', '不一定', '无法判断'], ans: 0 },
+            { grade: 5, q: '下面哪个数是质数？', opts: ['21', '27', '29', '33'], ans: 2 },
+            { grade: 5, q: '分数 3/4 的分子加上6，要使分数大小不变，分母应（   ）', opts: ['加上6', '加上8', '乘3', '乘2'], ans: 2 },
+            { grade: 5, q: '一个平行四边形的底是6cm，高是4cm，面积是（   ）cm²。', opts: ['12', '24', '36', '48'], ans: 1 },
+            { grade: 5, q: '圆形纸片对折后，折痕是圆的（   ）', opts: ['半径', '直径', '周长', '面积'], ans: 1 },
+            { grade: 5, q: '某班男生人数是女生的 4/5，女生人数与全班人数的比是（   ）', opts: ['4:5', '5:4', '4:9', '5:9'], ans: 3 },
+            { grade: 5, q: '下面图形中，对称轴最多的是（   ）', opts: ['正方形', '长方形', '等边三角形', '圆'], ans: 3 },
+            { grade: 5, q: '小数的性质是：小数末尾添上“0”或去掉“0”，小数大小不变。（   ）', opts: ['正确', '错误', '不一定', '无法判断'], ans: 0 },
+            { grade: 5, q: '如果 a÷b=5（a、b均为非0自然数），那么a和b的最小公倍数是（   ）', opts: ['a', 'b', '5', 'ab'], ans: 0 },
+            // 六年级 (23-34)
+            { grade: 6, q: '一根绳子长 2/3 米，用去 1/4 米，还剩（   ）米。', opts: ['5/12', '7/12', '1/2', '1/4'], ans: 0 },
+            { grade: 6, q: '甲数的 3/5 等于乙数的 2/3（甲、乙均不为0），则甲数（   ）乙数。', opts: ['大于', '小于', '等于', '无法比较'], ans: 0 },
+            { grade: 6, q: '一个比的比值是 2/3，后项是 12，前项是（   ）', opts: ['6', '8', '9', '18'], ans: 1 },
+            { grade: 6, q: '把一个棱长6cm的正方体木块削成一个最大的圆锥，圆锥的体积是（   ）cm³。', opts: ['56.52', '113.04', '169.56', '216'], ans: 0 },
+            { grade: 6, q: '下面百分数中，可能超过100%的是（   ）', opts: ['出勤率', '合格率', '增长率', '成活率'], ans: 2 },
+            { grade: 6, q: '一个长方体长、宽、高分别扩大2倍，体积扩大（   ）倍。', opts: ['2', '4', '6', '8'], ans: 3 },
+            { grade: 6, q: '在比例尺 1:200000 的地图上，图上距离5cm代表实际距离（   ）km。', opts: ['1', '10', '100', '0.1'], ans: 0 },
+            { grade: 6, q: '一个圆柱和一个圆锥等底等高，圆柱体积是圆锥的（   ）倍。', opts: ['2', '3', '1/3', '1/2'], ans: 1 },
+            { grade: 6, q: '六（1）班今天出勤48人，缺勤2人，今天的出勤率是（   ）%', opts: ['96', '95', '98', '92'], ans: 0 },
+            { grade: 6, q: '一个数增加20%后再减少20%，结果与原数相比（   ）', opts: ['增加了', '减少了', '不变', '无法确定'], ans: 1 },
+            { grade: 6, q: '甲、乙两数的比是5:3，甲数比乙数多（   ）', opts: ['2/3', '2/5', '3/5', '1/2'], ans: 0 },
+            { grade: 6, q: '扇形统计图可以清楚地表示各部分数量与总数之间的关系。（   ）', opts: ['正确', '错误', '不一定', '无法判断'], ans: 0 },
+            // 初一 (35-50)
+            { grade: 7, q: '−3 的相反数是（   ）', opts: ['3', '−3', '1/3', '−1/3'], ans: 0 },
+            { grade: 7, q: '计算 (−2)³ 的结果是（   ）', opts: ['−6', '−8', '8', '6'], ans: 1 },
+            { grade: 7, q: '下列各数中，最小的是（   ）', opts: ['−2.1', '−2.01', '−1.9', '−2.001'], ans: 0 },
+            { grade: 7, q: '合并同类项：3a − 2b − a + b = （   ）', opts: ['2a − b', '2a − 3b', '4a − b', '4a − 3b'], ans: 0 },
+            { grade: 7, q: '解方程 3(x−2) = x 的解是（   ）', opts: ['1', '2', '3', '4'], ans: 2 },
+            { grade: 7, q: '下列说法正确的是（   ）', opts: ['射线AB和射线BA是同一条射线', '两点之间的所有连线中，线段最短', '过一点有且只有一条直线', '互补的两个角一定有一个是钝角'], ans: 1 },
+            { grade: 7, q: '若 |a| = 5，则 a = （   ）', opts: ['5', '−5', '5或−5', '0'], ans: 2 },
+            { grade: 7, q: '计算 (−4) ÷ (−2) × 3 = （   ）', opts: ['6', '−6', '2', '−2'], ans: 0 },
+            { grade: 7, q: '多项式 2x² − 3x + 1 的次数是（   ）', opts: ['1', '2', '3', '0'], ans: 1 },
+            { grade: 7, q: '若 a+b=0，则 a 与 b 的关系是（   ）', opts: ['相等', '互为倒数', '互为相反数', '互为负倒数'], ans: 2 },
+            { grade: 7, q: '下列图形中，具有稳定性的是（   ）', opts: ['三角形', '四边形', '五边形', '六边形'], ans: 0 },
+            { grade: 7, q: '如图，直线a∥b，∠1=50°，则∠2的度数为（   ）', opts: ['50°', '130°', '40°', '不能确定'], ans: 0 },
+            { grade: 7, q: '用科学记数法表示 1230000 为（   ）', opts: ['1.23×10⁵', '1.23×10⁶', '12.3×10⁵', '0.123×10⁷'], ans: 1 },
+            { grade: 7, q: '下列各式中，是方程的是（   ）', opts: ['3+5=8', 'x−1>0', '2x+3=7', 'x+y'], ans: 2 },
+            { grade: 7, q: '一个角的补角是120°，则这个角是（   ）度。', opts: ['60', '80', '100', '120'], ans: 0 },
+            { grade: 7, q: '把方程 2x − 3y = 6 写成用含x的代数式表示y的形式为（   ）', opts: ['y=(2x−6)/3', 'y=(6−2x)/3', 'y=(2x+6)/3', 'y= (2x−6)/−3'], ans: 0 },
+        ];
+
+        // 确保50题
+        console.log('题目总数:', questions.length);
+
+        // ---------- 应用逻辑 ----------
+        let currentIndex = 0;
+        let score = 0;
+        let answered = false; // 当前题目是否已答
+        let userAnswers = new Array(questions.length).fill(null); // 存储选中的选项索引
+
+        const qIndexDisplay = document.getElementById('qIndexDisplay');
+        const scoreDisplay = document.getElementById('scoreDisplay');
+        const questionText = document.getElementById('questionText');
+        const optionsContainer = document.getElementById('optionsContainer');
+        const nextBtn = document.getElementById('nextBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const resultMessage = document.getElementById('resultMessage');
+
+        function renderQuestion(index) {
+            const q = questions[index];
+            if (!q) return;
+            // 显示进度
+            qIndexDisplay.textContent = index + 1;
+            scoreDisplay.textContent = score;
+
+            questionText.textContent = `【${q.grade}年级】 ${q.q}`;
+            // 生成选项
+            optionsContainer.innerHTML = '';
+            const labels = ['A', 'B', 'C', 'D'];
+            q.opts.forEach((opt, i) => {
+                const label = document.createElement('label');
+                const radio = document.createElement('input');
+                radio.type = 'radio';
+                radio.name = 'question';
+                radio.value = i;
+                radio.disabled = answered; // 如果已答，禁用
+                // 如果已经回答过该题，显示之前的选择及正误
+                if (userAnswers[index] !== null && answered) {
+                    radio.disabled = true;
+                    if (i === q.ans) {
+                        label.classList.add('show-correct');
+                    } else if (i === userAnswers[index] && i !== q.ans) {
+                        label.classList.add('selected-wrong');
+                    } else if (i === userAnswers[index] && i === q.ans) {
+                        label.classList.add('selected-correct');
+                    }
+                }
+                label.appendChild(radio);
+                label.appendChild(document.createTextNode(` ${labels[i]}. ${opt}`));
+                optionsContainer.appendChild(label);
+
+                // 点击事件（单选变化）
+                radio.addEventListener('change', function(e) {
+                    if (answered) return;
+                    const selected = parseInt(this.value);
+                    handleAnswer(selected);
+                });
+            });
+
+            // 如果该题已答过，并且answered为true，则显示反馈消息
+            if (answered) {
+                const userAns = userAnswers[index];
+                if (userAns !== null) {
+                    const isCorrect = (userAns === q.ans);
+                    resultMessage.textContent = isCorrect ? '✅ 回答正确！' : '❌ 回答错误，正确答案是 ' + ['A','B','C','D'][q.ans];
+                    resultMessage.style.color = isCorrect ? '#16a34a' : '#dc2626';
+                }
+            } else {
+                resultMessage.textContent = '';
+            }
+
+            // 控制下一题按钮
+            nextBtn.disabled = !answered || (index === questions.length - 1);
+            // 如果是最后一题并且已答，显示完成
+            if (index === questions.length - 1 && answered) {
+                nextBtn.textContent = '🏁 已完成';
+                nextBtn.disabled = true;
+            } else {
+                nextBtn.textContent = '下一题 →';
+            }
+        }
+
+        function handleAnswer(selected) {
+            if (answered) return;
+            const q = questions[currentIndex];
+            const isCorrect = (selected === q.ans);
+            if (isCorrect) score++;
+            userAnswers[currentIndex] = selected;
+            answered = true;
+            // 更新分数显示
+            scoreDisplay.textContent = score;
+            // 重新渲染当前题目以显示正确/错误标记
+            renderQuestion(currentIndex);
+            // 启用下一题
+            nextBtn.disabled = false;
+            if (currentIndex === questions.length - 1) {
+                nextBtn.textContent = '🏁 已完成';
+                nextBtn.disabled = true;
+                // 显示最终分数
+                resultMessage.textContent = `🎉 全部完成！你的得分：${score} / ${questions.length}`;
+                resultMessage.style.color = '#1e3a5f';
+            }
+        }
+
+        function goToNext() {
+            if (!answered) return;
+            if (currentIndex < questions.length - 1) {
+                currentIndex++;
+                answered = false; // 新题目未答
+                // 如果新题目之前有记录答案，则恢复状态
+                if (userAnswers[currentIndex] !== null) {
+                    // 如果已经回答过，则设置为已答状态
+                    answered = true;
+                    // 但需要恢复分数？分数已在之前计算过，所以不用再加，只是显示
+                    // 重新计算分数（根据所有已答记录）
+                    recalcScore();
+                }
+                renderQuestion(currentIndex);
+            }
+        }
+
+        function recalcScore() {
+            let s = 0;
+            for (let i = 0; i < questions.length; i++) {
+                if (userAnswers[i] !== null && userAnswers[i] === questions[i].ans) {
+                    s++;
+                }
+            }
+            score = s;
+            scoreDisplay.textContent = score;
+        }
+
+        function resetQuiz() {
+            currentIndex = 0;
+            answered = false;
+            userAnswers.fill(null);
+            score = 0;
+            scoreDisplay.textContent = '0';
+            resultMessage.textContent = '';
+            resultMessage.style.color = '';
+            nextBtn.textContent = '下一题 →';
+            nextBtn.disabled = true;
+            renderQuestion(0);
+        }
+
+        // 初始化
+        resetQuiz();
+
+        // 事件绑定
+        nextBtn.addEventListener('click', goToNext);
+        resetBtn.addEventListener('click', resetQuiz);
+
+        // 键盘支持（右箭头下一题）
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' && !nextBtn.disabled) {
+                goToNext();
+            }
+        });
+    </script>
+</body>
+</html>
